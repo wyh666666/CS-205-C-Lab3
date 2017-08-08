@@ -1,0 +1,32 @@
+Input:
+	flags:
+		-v
+			show all the detail
+		-d
+			debug model
+		-p
+			search precisely
+		-f
+			search fastly
+		-o
+			Out put a text with search result
+	path
+		The complete document directory
+
+Output:
+	If using -v model, put all the detail with out put stream stderr
+
+	Only print the name of file(with address).
+	Showing the same file in the same line, separate with /t
+
+lab3.h:
+	
+process_input.c:
+	Using getopt() process command input argument
+	Input:
+		int argc, char *argv[]
+	Output:
+		int
+			0 success
+			1 failed
+	Sign all the data in global variable
