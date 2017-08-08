@@ -1,9 +1,10 @@
-objects = main.o
+objects = a.o b.o
 
-find_same : $(objects)
-	gcc -Wall $(objects) -o find_same
+a : $(objects)
+	gcc -Wall $(objects) -o a
 
-main.o : xxx.h
+a.o : test.h b.h
+b.o : b.h
 
 clean :
-	rm find_same $(objects)
+	rm a $(objects)

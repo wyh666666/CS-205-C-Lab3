@@ -20,6 +20,7 @@ Output:
 	Showing the same file in the same line, separate with /t
 
 lab3.h:
+	All the global variable
 	
 process_input.c:
 	Using getopt() process command input argument
@@ -30,3 +31,22 @@ process_input.c:
 			0 success
 			1 failed
 	Sign all the data in global variable
+
+compare.c:
+	Compare whether two file is same
+
+tree.c:
+	Contain the basic operation of tree
+
+stuct node:
+	name
+	address
+	size
+	left node
+	right node
+
+scan_dir.c:
+	scan all the directory
+	generate node for every file
+	add into tree
+	contain main
