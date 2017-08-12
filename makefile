@@ -1,10 +1,12 @@
-objects = a.o b.o
+objects = scan_dir.o stack.o tree.o process_input.o
 
-a : $(objects)
-	gcc -Wall $(objects) -o a
+scan_dir : $(objects)
+	gcc -Wall $(objects) -o scan_dir
 
-a.o : test.h b.h
-b.o : b.h
+process_input.o : Lab3.h
+scan_dir.o : Lab3.h stack.h
+stack.o : Lab3.h stack.h
+tree.o : Lab3.h tree.h
 
 clean :
-	rm a $(objects)
+	rm scan_dir $(objects)
