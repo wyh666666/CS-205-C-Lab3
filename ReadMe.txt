@@ -1,4 +1,4 @@
-This excercise is for CS 205  C/C++ course in SUStech
+This excercise is for CS 205  C/C++ course in SUSTech
 Written by 11510602 Ni Xizi/ 11612027 Zhang Jinpeng
 
 Lab 3 require to search all the file in a folder, print the name of same file in stdout.
