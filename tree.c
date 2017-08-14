@@ -2,7 +2,7 @@
 * @Author: Caesar
 * @Date:   2017-08-11 10:32:06
 * @Last Modified by:   Caesar
-* @Last Modified time: 2017-08-14 14:07:18
+* @Last Modified time: 2017-08-15 00:50:08
 */
 #include "tree.h"
 
@@ -42,24 +42,58 @@ int add(FILE_NODE *root, FILE_NODE *node){
 					return 1;
 				}
 			}else{
-				while(feof(fp1) == 1 || feof(fp2) == 1){
-					char c1 = fgetc(fp1);
-					char c2 = fgetc(fp2);
-					if(GLOBAL.debug == 1){
-						fprintf(stderr, "%c\t%c\n", c1, c2);
-					}
-					
-					if(c1 != c2){
-						fclose(fp1);
-						fclose(fp2);
-						if(root -> sibling != NULL){
-							add(root -> sibling, node);
-						}else{
-							root -> sibling = node;
+				long block_start = root -> size;
+				int index = block_start/10;
+				int count = 0;
+				int num = index/100;
+				while(feof(fp1) == 0 && feof(fp2) == 0){
+					count++;
+					if(block_start > 2000 && GLOBAL.precise == 0){
+						int j = 0;
+						for(j = 0; j < num; j++){
+							char c1 = fgetc(fp1);
+							char c2 = fgetc(fp2);
+							if(GLOBAL.debug == 1){
+								fprintf(stderr, "%c\t%c\n", c1, c2);
+							}
+							if(c1 != c2){
+								fclose(fp1);
+								fclose(fp2);
+								if(root -> sibling != NULL){
+									add(root -> sibling, node);
+								}else{
+									root -> sibling = node;
+								}
+								return 0;
+							}
+							if(ftell(fp1) + index > root -> size){
+								break;
+							}
 						}
-						return 0;
+						fseek(fp1, index, SEEK_CUR);
+						fseek(fp2, index, SEEK_CUR);
+						if(ftell(fp1) + index > root -> size){
+							break;
+						}
+					}else{
+						char c1 = fgetc(fp1);
+						char c2 = fgetc(fp2);
+						if(GLOBAL.debug == 1){
+							fprintf(stderr, "%c\t%c\n", c1, c2);
+						}
+						if(c1 != c2){
+							fclose(fp1);
+							fclose(fp2);
+							if(root -> sibling != NULL){
+								add(root -> sibling, node);
+							}else{
+								root -> sibling = node;
+							}
+							return 0;
+						}
 					}
 				}
+
 				fclose(fp1);
 				fclose(fp2);
 				if(root -> same != NULL){

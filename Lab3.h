@@ -29,13 +29,14 @@ typedef struct dir_stack{
 struct globalArgs_t{
 	int detail;
 	int debug;
+	int precise;
 	char *add_ori;
 	int add_ignore;
 	FILE_NODE *root;
 	DIR_STACK *dir_stack;
 }GLOBAL;
 
-static const char *optString = "vd";
+static const char *optString = "vdp";
 
 int process(int argc, char **argv);
 

@@ -1,8 +1,8 @@
 /*
 * @Author: caesar
 * @Date:   2017-08-14 13:34:41
-* @Last Modified by:   caesar
-* @Last Modified time: 2017-08-14 13:52:47
+* @Last Modified by:   Caesar
+* @Last Modified time: 2017-08-15 00:53:02
 */
 #include "Lab3.h"
 
@@ -16,6 +16,7 @@ int process(int argc, char **argv){
 	int opt = 0;
 	GLOBAL.detail = 0;
 	GLOBAL.debug = 0;
+	GLOBAL.precise = 0;
 	GLOBAL.add_ori = (char *)malloc(ADD_SIZE);
 	GLOBAL.add_ignore = 23;
 	GLOBAL.root = NULL;
@@ -29,8 +30,11 @@ int process(int argc, char **argv){
 			case 'd':
 				GLOBAL.debug = 1;
 				break;
+			case 'p':
+				GLOBAL.precise = 1;
+				break;
 			default:
-				fprintf(stderr, "Input Error!\n Please enter argument like -v visual, -d debug, searching address");
+				fprintf(stderr, "Input Error!\n Please enter argument like -v visual, -d debug, -p precise, searching address");
 				break;
 		}
 		opt = getopt(argc, argv, optString);
