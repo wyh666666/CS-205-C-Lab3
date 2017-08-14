@@ -1,8 +1,8 @@
 /*
-* @Author: nixizi
+* @Author: caesar
 * @Date:   2017-08-10 13:52:23
-* @Last Modified by:   nixizi
-* @Last Modified time: 2017-08-12 00:57:55
+* @Last Modified by:   caesar
+* @Last Modified time: 2017-08-14 13:58:12
 */
 
 #include "Lab3.h"
@@ -12,8 +12,9 @@
 int main(int argc, char *argv[]) {
 	process(argc, argv);
 	fprintf(stderr, "Scanning %s\n", GLOBAL.add_ori);
-	fprintf(stderr, "Ignore: %d\n", GLOBAL.add_ignore);
-	fprintf(stderr, "After process\n");
+	if(GLOBAL.debug == 1){
+		fprintf(stderr, "Ignore: %d\n", GLOBAL.add_ignore);
+	}
 	DIR_NODE *dir_first;
 	char add_cur[ADD_SIZE];
 	strncpy(add_cur, GLOBAL.add_ori, ADD_SIZE);
@@ -34,7 +35,7 @@ int main(int argc, char *argv[]) {
 		}
 		if((dir = opendir(add_cur)) == NULL){
 			if(GLOBAL.detail == 1){
-				fprintf(stderr, "Cannot open\n");
+				fprintf(stderr, "It is file\n");
 			}
 			char add_file[ADD_SIZE];
 			strncpy(add_file, add_cur, ADD_SIZE);
@@ -52,13 +53,13 @@ int main(int argc, char *argv[]) {
 			
 			while((dp = readdir(dir)) != NULL){
 				if(GLOBAL.debug == 1){
-					printf("current: %s\n", add_cur);
+					fprintf(stderr, "current: %s\n", add_cur);
 				}
 				if((strcmp(dp -> d_name, ".") == 0) || (strcmp(dp -> d_name, "..") == 0)){
 					continue;
 				}
 				if(GLOBAL.detail == 1){
-					printf("Scaning: %s\n", dp -> d_name);
+					fprintf(stderr, "Scaning: %s\n", dp -> d_name);
 				}
 				char a[1];
 				a[0] = '/';

@@ -1,8 +1,8 @@
 /*
-* @Author: nixizi
+* @Author: Caesar
 * @Date:   2017-08-10 16:43:07
-* @Last Modified by:   nixizi
-* @Last Modified time: 2017-08-12 00:53:18
+* @Last Modified by:   caesar
+* @Last Modified time: 2017-08-14 14:06:25
 */
 
 #include "stack.h"
@@ -71,7 +71,7 @@ DIR_NODE *pull(DIR_STACK *stack){
 
 int print_to_end(DIR_NODE *node){
 	if(node != NULL){
-		printf("%s\n", node -> address);
+		fprintf(stderr, "%s\n", node -> address);
 		print_to_end(node -> next);
 	}
 }

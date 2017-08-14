@@ -5,8 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#define ADD_SIZE 1000
-#define NAME_SIZE 250
+#define ADD_SIZE 10000
+#define NAME_SIZE 260
 
 typedef struct dir_node{
 	char address[ADD_SIZE];
@@ -36,8 +36,6 @@ struct globalArgs_t{
 }GLOBAL;
 
 static const char *optString = "vd";
-FILE_NODE *root;
-int add_ignore;
 
 int process(int argc, char **argv);
 

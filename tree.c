@@ -1,8 +1,8 @@
 /*
-* @Author: nixizi
+* @Author: Caesar
 * @Date:   2017-08-11 10:32:06
-* @Last Modified by:   nixizi
-* @Last Modified time: 2017-08-12 00:57:19
+* @Last Modified by:   Caesar
+* @Last Modified time: 2017-08-14 14:07:18
 */
 #include "tree.h"
 
@@ -70,7 +70,7 @@ int add(FILE_NODE *root, FILE_NODE *node){
 				char *add_root = root -> address;
 				char *add_node = node -> address;
 				if(GLOBAL.debug == 1){
-					printf("%s\t%s\n", add_root, add_node);
+					fprintf(stderr, "%s\t%s\n", add_root, add_node);
 				}	
 			}
 		}else if(1 == result){
